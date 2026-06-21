@@ -1078,20 +1078,20 @@ a {
 }
 
 .contact-item a:hover { color: var(--lime); }
-.contact-item--pending { opacity: 0.7; }
-
-.button--whatsapp-pending {
+.button--whatsapp {
   grid-column: 1 / -1;
   width: 100%;
   min-height: 48px;
-  color: rgba(255, 255, 255, 0.46);
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.11);
-  box-shadow: none;
-  cursor: not-allowed;
+  color: var(--green-950);
+  background: var(--lime);
+  border-color: var(--lime);
 }
 
-.button--whatsapp-pending:hover { background: rgba(255, 255, 255, 0.05); transform: none; box-shadow: none; }
+.button--whatsapp:hover {
+  color: var(--green-950);
+  background: #d3f36f;
+  border-color: #d3f36f;
+}
 
 /* Pie */
 .site-footer {
@@ -1293,4 +1293,3 @@ a {
   outline: 3px solid var(--lime);
   outline-offset: 4px;
 }
-
