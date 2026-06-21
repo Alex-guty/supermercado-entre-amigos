@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return "Abrimos de lunes a domingo, de 7:00 a.m. a 10:00 p.m.";
     }
     if (/ubicacion|direccion|donde|llegar|maps/.test(text)) {
-      return "Estamos en Altamira de Biolley, Buenos Aires, Puntarenas. Usa el botón “Cómo llegar” para abrir la ubicación exacta en Google Maps.";
+      return "Estamos en El Carmen de Biolley, Buenos Aires, Puntarenas. Usa el botón “Cómo llegar” para abrir la ubicación en Google Maps.";
     }
     if (/whatsapp|telefono|numero|contacto|llamar/.test(text)) {
       return "Puedes llamarnos o escribirnos por WhatsApp al 8953-1112. El botón verde de WhatsApp abre la conversación directamente.";
