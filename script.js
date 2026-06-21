@@ -12,10 +12,100 @@ document.addEventListener("DOMContentLoaded", () => {
   const navLinks = [...document.querySelectorAll('.main-nav a[href^="#"]')];
   const backToTop = document.querySelector("#back-to-top");
   const year = document.querySelector("#current-year");
+  const chatbot = document.querySelector("#chatbot");
+  const chatToggle = document.querySelector("#chat-toggle");
+  const chatClose = document.querySelector("#chat-close");
+  const chatMessages = document.querySelector("#chat-messages");
+  const chatForm = document.querySelector("#chat-form");
+  const chatInput = document.querySelector("#chat-input");
+  const quickReplies = document.querySelectorAll("[data-chat-question]");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   // Mantiene el año del pie actualizado automáticamente.
   if (year) year.textContent = new Date().getFullYear();
+
+  // Asistente local para las consultas más frecuentes del supermercado.
+  const normalizeText = (text) =>
+    text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+
+  const getBotReply = (question) => {
+    const text = normalizeText(question);
+
+    if (/\b(hola|buenas|saludos)\b/.test(text)) {
+      return "¡Hola! Puedo ayudarte con el horario, la ubicación, productos, precios o nuestros datos de contacto.";
+    }
+    if (/horario|hora|abren|abierto|cierran/.test(text)) {
+      return "Abrimos de lunes a domingo, de 7:00 a.m. a 10:00 p.m.";
+    }
+    if (/ubicacion|direccion|donde|llegar|maps/.test(text)) {
+      return "Estamos en Altamira de Biolley, Buenos Aires, Puntarenas. Usa el botón “Cómo llegar” para abrir la ubicación exacta en Google Maps.";
+    }
+    if (/whatsapp|telefono|numero|contacto|llamar/.test(text)) {
+      return "Puedes llamarnos o escribirnos por WhatsApp al 8953-1112. El botón verde de WhatsApp abre la conversación directamente.";
+    }
+    if (/correo|email|e-mail/.test(text)) {
+      return "Nuestro correo es supermercadoentreamigossrl@gmail.com.";
+    }
+    if (/precio|costo|producto|disponibilidad|existencia|oferta/.test(text)) {
+      return "Para confirmar productos, precios o existencias del día, escríbenos por WhatsApp al 8953-1112 y con gusto te atendemos.";
+    }
+    if (/gracias|pura vida/.test(text)) {
+      return "¡Con mucho gusto! Estamos para servirte.";
+    }
+
+    return "Puedo ayudarte con horario, ubicación, productos, precios, WhatsApp, teléfono o correo. Escribe una de esas opciones.";
+  };
+
+  const addChatMessage = (message, sender) => {
+    if (!chatMessages) return;
+    const bubble = document.createElement("p");
+    bubble.className = `chat-message chat-message--${sender}`;
+    bubble.textContent = message;
+    chatMessages.appendChild(bubble);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  };
+
+  const askChatbot = (question) => {
+    const cleanQuestion = question.trim();
+    if (!cleanQuestion) return;
+    addChatMessage(cleanQuestion, "user");
+    addChatMessage(getBotReply(cleanQuestion), "bot");
+  };
+
+  const openChat = () => {
+    if (!chatbot || !chatToggle) return;
+    chatbot.hidden = false;
+    chatToggle.setAttribute("aria-expanded", "true");
+    chatToggle.setAttribute("aria-label", "Cerrar asistente virtual");
+    chatInput?.focus();
+  };
+
+  const closeChat = () => {
+    if (!chatbot || !chatToggle) return;
+    chatbot.hidden = true;
+    chatToggle.setAttribute("aria-expanded", "false");
+    chatToggle.setAttribute("aria-label", "Abrir asistente virtual");
+    chatToggle.focus();
+  };
+
+  chatToggle?.addEventListener("click", () => {
+    if (chatbot?.hidden) openChat();
+    else closeChat();
+  });
+  chatClose?.addEventListener("click", closeChat);
+  quickReplies.forEach((button) => {
+    button.addEventListener("click", () => askChatbot(button.dataset.chatQuestion || ""));
+  });
+  chatForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (!chatInput) return;
+    askChatbot(chatInput.value);
+    chatInput.value = "";
+    chatInput.focus();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && chatbot && !chatbot.hidden) closeChat();
+  });
 
   // Abre y cierra el menú móvil conservando los atributos de accesibilidad.
   const closeMenu = () => {
@@ -106,4 +196,3 @@ document.addEventListener("DOMContentLoaded", () => {
     sections.forEach((section) => sectionObserver.observe(section));
   }
 });
-

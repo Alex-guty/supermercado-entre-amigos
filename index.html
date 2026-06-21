@@ -87,10 +87,6 @@
         <a href="#contacto">Contacto</a>
       </nav>
 
-      <a class="button button--small nav-cta" href="mailto:supermercadoentreamigossrl@gmail.com?subject=Consulta%20desde%20la%20p%C3%A1gina%20web">
-        Contáctanos
-      </a>
-
       <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menú" aria-controls="main-nav" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -108,10 +104,6 @@
           <p class="hero__lead">Productos para tu mesa, tu hogar y tu día a día, con la cercanía de siempre en Altamira de Biolley.</p>
 
           <div class="hero__actions">
-            <a class="button" href="#ofertas">
-              Ver ofertas
-              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 14 0m-5-5 5 5-5 5"/></svg>
-            </a>
             <a class="button button--outline" href="https://www.google.com/maps/place/8%C2%B059'18.5%22N+83%C2%B001'43.7%22W/@8.988479,-83.0313842,17z/data=!3m1!4b1!4m4!3m3!8m2!3d8.988479!4d-83.0288093?hl=en&amp;entry=ttu&amp;g_ep=EgoyMDI2MDYxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
               Cómo llegar
             </a>
@@ -217,7 +209,6 @@
               <span class="tag">Selección de la semana</span>
               <h3>Frescura para tu mesa</h3>
               <p>Pregunta por la selección de frutas y vegetales disponible hoy.</p>
-              <a href="mailto:supermercadoentreamigossrl@gmail.com?subject=Consulta%20sobre%20productos%20frescos">Consultar disponibilidad <span aria-hidden="true">→</span></a>
             </div>
           </article>
 
@@ -230,7 +221,6 @@
               <span class="tag tag--warm">Despensa</span>
               <h3>Esenciales de cada día</h3>
               <p>Encuentra opciones para completar tu alacena.</p>
-              <span class="availability">Precios disponibles en tienda</span>
             </div>
           </article>
 
@@ -243,7 +233,6 @@
               <span class="tag tag--aqua">Hogar</span>
               <h3>Todo limpio, todo listo</h3>
               <p>Productos prácticos para cuidar cada espacio.</p>
-              <span class="availability">Sujeto a disponibilidad</span>
             </div>
           </article>
         </div>
@@ -365,7 +354,7 @@
             <div><strong>Teléfono y WhatsApp</strong><a href="tel:+50689531112">8953-1112</a></div>
           </div>
 
-          <a class="button button--whatsapp" href="https://wa.me/50689531112" target="_blank" rel="noopener noreferrer">
+          <a class="button button--whatsapp" href="https://wa.me/50689531112?text=Hola%2C%20quisiera%20recibir%20informaci%C3%B3n%20sobre%20los%20productos%20de%20Supermercado%20entre%20amigos." target="_blank" rel="noopener noreferrer">
             Escribir por WhatsApp
           </a>
         </div>
@@ -396,6 +385,46 @@
   <button class="back-to-top" id="back-to-top" type="button" aria-label="Volver arriba">
     <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 15 6-6 6 6"/></svg>
   </button>
+
+  <aside class="chatbot" id="chatbot" aria-labelledby="chatbot-title" hidden>
+    <header class="chatbot__header">
+      <div>
+        <strong id="chatbot-title">Asistente virtual</strong>
+        <span>Supermercado entre amigos</span>
+      </div>
+      <button class="chatbot__close" id="chat-close" type="button" aria-label="Cerrar chat">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+    </header>
+
+    <div class="chatbot__messages" id="chat-messages" role="log" aria-live="polite" aria-relevant="additions">
+      <p class="chat-message chat-message--bot">¡Hola! Soy el asistente de Supermercado entre amigos. ¿En qué puedo ayudarte?</p>
+    </div>
+
+    <div class="chatbot__quick-replies" aria-label="Preguntas frecuentes">
+      <button type="button" data-chat-question="¿Cuál es el horario?">Horario</button>
+      <button type="button" data-chat-question="¿Dónde están ubicados?">Ubicación</button>
+      <button type="button" data-chat-question="Quiero consultar productos y precios">Productos y precios</button>
+      <button type="button" data-chat-question="Quiero escribir por WhatsApp">WhatsApp</button>
+    </div>
+
+    <form class="chatbot__form" id="chat-form">
+      <label class="sr-only" for="chat-input">Escribe tu consulta</label>
+      <input id="chat-input" name="message" type="text" maxlength="160" autocomplete="off" placeholder="Escribe tu consulta…" required>
+      <button type="submit" aria-label="Enviar consulta">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m4 4 17 8-17 8 3-8-3-8Zm3 8h14"/></svg>
+      </button>
+    </form>
+  </aside>
+
+  <div class="floating-actions" aria-label="Canales de atención">
+    <a class="floating-action floating-action--whatsapp" href="https://wa.me/50689531112?text=Hola%2C%20quisiera%20recibir%20informaci%C3%B3n%20sobre%20los%20productos%20de%20Supermercado%20entre%20amigos." target="_blank" rel="noopener noreferrer" aria-label="Escribir por WhatsApp" title="WhatsApp">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 11.5a8 8 0 0 1-11.7 7.1L4 20l1.4-4.1A8 8 0 1 1 20 11.5Z"/><path d="M8.2 7.8c.4 3.6 2.4 5.6 6 6l1.2-1.3c.2-.2.5-.3.8-.1l2 1"/></svg>
+    </a>
+    <button class="floating-action floating-action--chat" id="chat-toggle" type="button" aria-label="Abrir asistente virtual" aria-controls="chatbot" aria-expanded="false" title="Asistente virtual">
+      <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 15a4 4 0 0 1-4 4H9l-5 3V8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v7Z"/><path d="M8 10h8M8 14h5"/></svg>
+    </button>
+  </div>
 
   <script src="script.js" defer></script>
 </body>
