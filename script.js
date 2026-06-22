@@ -20,6 +20,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatInput = document.querySelector("#chat-input");
   const quickReplies = document.querySelectorAll("[data-chat-question]");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const liquidButtons = document.querySelectorAll(".button, .floating-action, button");
+  const liquidTimers = new WeakMap();
+
+  // Proyecta un reflejo translúcido desde el punto exacto de cada toque o clic.
+  const triggerLiquidGlass = (element, clientX, clientY) => {
+    const rect = element.getBoundingClientRect();
+    const x = Number.isFinite(clientX) ? ((clientX - rect.left) / rect.width) * 100 : 50;
+    const y = Number.isFinite(clientY) ? ((clientY - rect.top) / rect.height) * 100 : 50;
+    const activeTimer = liquidTimers.get(element);
+
+    if (activeTimer) window.clearTimeout(activeTimer);
+    element.style.setProperty("--liquid-x", `${Math.min(100, Math.max(0, x))}%`);
+    element.style.setProperty("--liquid-y", `${Math.min(100, Math.max(0, y))}%`);
+    element.classList.remove("is-liquid-active");
+    void element.offsetWidth;
+    element.classList.add("is-liquid-active");
+
+    liquidTimers.set(
+      element,
+      window.setTimeout(() => element.classList.remove("is-liquid-active"), reduceMotion ? 120 : 620)
+    );
+  };
+
+  liquidButtons.forEach((button) => {
+    button.addEventListener("pointerdown", (event) => {
+      triggerLiquidGlass(button, event.clientX, event.clientY);
+    }, { passive: true });
+
+    button.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") triggerLiquidGlass(button);
+    });
+  });
 
   // Mantiene el año del pie actualizado automáticamente.
   if (year) year.textContent = new Date().getFullYear();
