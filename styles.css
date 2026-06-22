@@ -1183,6 +1183,9 @@ a {
 
 .floating-action--whatsapp { background: #25a95b; }
 .floating-action--whatsapp:hover { background: #1f914d; }
+.floating-action--facebook { background: #1877f2; }
+.floating-action--facebook:hover { background: #0c63d4; }
+.floating-action--facebook svg { fill: currentColor; stroke: none; }
 .floating-action--chat { background: var(--green-900); }
 .floating-action--chat:hover,
 .floating-action--chat[aria-expanded="true"] { color: var(--green-950); background: var(--lime); }
