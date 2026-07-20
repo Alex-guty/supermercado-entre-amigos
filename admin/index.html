@@ -41,8 +41,8 @@
     </section>
     <section class="panel" aria-labelledby="list-title">
       <div class="panel__heading"><div><p class="kicker">Contenido local</p><h2 id="list-title">Publicaciones</h2></div><label class="filter">Filtrar<select id="status-filter"><option value="all">Todas</option><option value="active">Activas</option><option value="inactive">Inactivas</option><option value="expired">Vencidas</option><option value="scheduled">Programadas</option></select></label></div>
-      <div class="toolbar"><button class="button button--secondary" id="seed-demo" type="button">Cargar datos de demostración</button><button class="button button--danger-quiet" id="reset-data" type="button">Eliminar todos los datos locales</button></div>
       <p id="list-status" class="list-status" role="status">Cargando publicaciones…</p><div id="publication-list" class="publication-list"></div>
+      <nav class="admin-pagination" id="admin-pagination" aria-label="Páginas de publicaciones" hidden><button class="button button--quiet" id="admin-previous" type="button">← Anterior</button><span id="admin-page-status"></span><button class="button button--quiet" id="admin-next" type="button">Siguiente →</button></nav>
     </section>
   </main>
   <script type="module" src="admin.js?v=20260720-1"></script>

@@ -3,7 +3,7 @@ export function validateImage(file) {
   if (!file) return [];
   const errors = [];
   if (!IMAGE_RULES.acceptedTypes.includes(file.type)) errors.push("La imagen debe ser JPEG, PNG o WebP.");
-  if (file.size > IMAGE_RULES.maxBytes) errors.push("La imagen no puede superar 3 MB.");
+  if (file.size > IMAGE_RULES.maxBytes) errors.push("La imagen no puede superar 5 MB.");
   return errors;
 }
 function validUrl(value) {
