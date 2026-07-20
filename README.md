@@ -1,19 +1,52 @@
 # Supermercado entre amigos
 
-Sitio estático en HTML, CSS y JavaScript.
+Sitio estático con Cloudflare Pages Functions, D1 y R2. La página pública permanece en `/` y el panel en `/admin/`.
 
 ## Desarrollo local
 
-Sirve la carpeta mediante un servidor HTTP local (los módulos JavaScript no funcionan correctamente abriendo `index.html` directamente con `file://`). La página pública está en `/` y el panel local en `/admin/`.
+```sh
+npm install
+npm run db:migrate:local
+npm run dev
+```
 
-El panel almacena publicaciones e imágenes en IndexedDB, dentro del navegador y dispositivo donde se crean. El botón **Cargar datos de demostración** agrega ejemplos claramente identificados; **Eliminar todos los datos locales** reinicia el almacenamiento.
+Wrangler sirve el sitio, `/admin/` y `/api/`. No abras los HTML con `file://`.
 
-## Arquitectura de publicaciones
+## Arquitectura
 
-- `js/promotion-service.js`: API usada por las interfaces.
-- `js/local-promotion-repository.js`: implementación temporal de IndexedDB.
-- `js/validation.js`: validaciones compartidas.
-- `js/promotions.js`: sección pública y tarjetas.
-- `admin/`: interfaz administrativa local.
+- `functions/api/publications.js`: API pública paginada y filtrada por vigencia en `America/Costa_Rica`.
+- `functions/api/images/[key].js`: imágenes privadas de R2 servidas por el mismo dominio.
+- `functions/api/admin/`: API administrativa protegible con Access.
+- `migrations/`: esquema D1 sin datos de demostración.
+- `js/promotion-service.js`: cliente usado por las interfaces; estas no conocen D1 ni R2.
 
-Para migrar a Cloudflare, se puede sustituir el repositorio local por uno que consuma Pages Functions o Workers sin cambiar las interfaces. La protección futura de `/admin/*` y `/api/admin/*` debe configurarse con Cloudflare Access; este proyecto no contiene contraseñas ni correos autorizados.
+Al reemplazar una imagen, primero se sube el archivo nuevo. La publicación se actualiza después y el servidor elimina la imagen anterior solamente si D1 se actualizó correctamente. Si la actualización falla, el cliente solicita eliminar la imagen recién subida. Al eliminar una publicación, D1 se modifica antes de borrar su imagen. La ruta de eliminación directa rechaza imágenes todavía asociadas.
+
+## Recursos
+
+Preview:
+
+- D1: `supermercado-entre-amigos-db-preview`
+- R2: `supermercado-entre-amigos-images-preview`
+
+Producción:
+
+- D1: `supermercado-entre-amigos-db`
+- R2: `supermercado-entre-amigos-images`
+
+Los identificadores públicos de D1 están en `wrangler.jsonc` (preview) y `wrangler.production.jsonc` (producción). Nunca guardes tokens o credenciales.
+
+## Cloudflare Access (configuración manual)
+
+En Zero Trust crea una aplicación Self-hosted para el dominio existente y protege:
+
+- `entreamigosbiolley.com/admin`
+- `entreamigosbiolley.com/admin/*`
+- `entreamigosbiolley.com/api/admin`
+- `entreamigosbiolley.com/api/admin/*`
+
+Crea una política `Administradores Supermercado Entre Amigos`, acción `Allow`, con `<CORREO_DUEÑO>` y `<CORREO_ADMINISTRADOR>`. Usa One-time PIN por correo. Verifica que ambos correos entren, que un tercer correo sea bloqueado, que la API administrativa directa también quede bloqueada y que `/`, `/api/publications` y `/api/images/*` continúen públicos.
+
+## Publicación segura
+
+Prueba primero la rama `feature/cloudflare-promotions` en la URL `pages.dev`, usando bindings de preview. No conectes `entreamigosbiolley.com`, no cambies DNS y no desactives GitHub Pages hasta validar el preview y documentar un plan de reversión.
