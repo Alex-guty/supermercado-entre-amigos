@@ -19,6 +19,7 @@ Wrangler sirve el sitio, `/admin/` y `/api/`. No abras los HTML con `file://`.
 - `functions/api/admin/`: API administrativa protegible con Access.
 - `migrations/`: esquema D1 sin datos de demostración.
 - `js/promotion-service.js`: cliente usado por las interfaces; estas no conocen D1 ni R2.
+- `js/image-optimizer.js`: convierte imágenes mayores de 1 MB a WebP y reduce su resolución antes de subirlas a R2. Los archivos pequeños no se aumentan artificialmente.
 
 Al reemplazar una imagen, primero se sube el archivo nuevo. La publicación se actualiza después y el servidor elimina la imagen anterior solamente si D1 se actualizó correctamente. Si la actualización falla, el cliente solicita eliminar la imagen recién subida. Al eliminar una publicación, D1 se modifica antes de borrar su imagen. La ruta de eliminación directa rechaza imágenes todavía asociadas.
 
