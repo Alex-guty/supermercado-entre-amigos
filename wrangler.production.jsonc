@@ -1,0 +1,8 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "supermercado-entre-amigos",
+  "compatibility_date": "2026-07-20",
+  "pages_build_output_dir": ".",
+  "d1_databases": [{ "binding": "DB", "database_name": "supermercado-entre-amigos-db", "database_id": "5b6ca90c-b3ce-470b-a0f5-4cb0420495eb" }],
+  "r2_buckets": [{ "binding": "PROMOTION_IMAGES", "bucket_name": "supermercado-entre-amigos-images" }]
+}

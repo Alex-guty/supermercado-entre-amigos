@@ -1,0 +1,9 @@
+import test from"node:test";import assert from"node:assert/strict";import{detectImage,validId,validatePublication}from"../functions/_lib/validation.js";
+const valid={type:"promotion",title:"Oferta",description:"Descripción",startDate:"2026-07-20",endDate:"2026-07-20",active:true,buttonText:"",buttonUrl:""};
+test("acepta una publicación válida",()=>assert.deepEqual(validatePublication(valid).errors,[]));
+test("rechaza título vacío",()=>assert.ok(validatePublication({...valid,title:""}).errors.length));
+test("rechaza tipo y estado inválidos",()=>assert.equal(validatePublication({...valid,type:"bad",active:"true"}).errors.length,2));
+test("rechaza fechas invertidas",()=>assert.ok(validatePublication({...valid,endDate:"2026-07-19"}).errors.length));
+test("rechaza URL javascript",()=>assert.ok(validatePublication({...valid,buttonText:"Abrir",buttonUrl:"javascript:alert(1)"}).errors.length));
+test("valida UUID",()=>{assert.equal(validId("550e8400-e29b-41d4-a716-446655440000"),true);assert.equal(validId("bad"),false);});
+test("detecta firmas de imágenes",()=>{assert.equal(detectImage(Uint8Array.from([0xff,0xd8,0xff]).buffer).type,"image/jpeg");assert.equal(detectImage(Uint8Array.from([137,80,78,71,13,10,26,10]).buffer).type,"image/png");assert.equal(detectImage(new TextEncoder().encode("RIFF0000WEBP").buffer).type,"image/webp");assert.equal(detectImage(new TextEncoder().encode("fake").buffer),null);});

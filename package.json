@@ -1,0 +1,16 @@
+{
+  "name": "supermercado-entre-amigos",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler pages dev . --local --d1 DB --r2 PROMOTION_IMAGES",
+    "check": "node --check js/api-client.js && node --check admin/admin.js",
+    "test": "node --test tests/*.test.js",
+    "db:migrate:local": "wrangler d1 migrations apply DB --local",
+    "db:migrate:preview": "wrangler d1 migrations apply supermercado-entre-amigos-db-preview --remote",
+    "db:migrate:production": "wrangler d1 migrations apply DB --remote --config wrangler.production.jsonc"
+  },
+  "devDependencies": {
+    "wrangler": "^4.112.0"
+  }
+}
