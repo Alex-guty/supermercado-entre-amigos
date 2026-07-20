@@ -1,0 +1,24 @@
+.promotions { background: var(--surface); }
+.promotions__status { margin: 34px 0 0; padding: 24px; text-align: center; color: var(--muted); background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-md); }
+.promotions__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 24px; margin-top: 36px; }
+.promotion-card { overflow: hidden; display: flex; flex-direction: column; align-self: start; min-width: 0; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
+.promotion-card__media { overflow: hidden; width: 100%; height: 220px; flex: 0 0 220px; background: var(--cream); }
+.promotion-card__image { display: block; width: 100%; height: 100%; object-fit: fill; }
+.promotion-card__body { display: flex; flex-direction: column; align-items: flex-start; padding: 20px; }
+.promotion-card__tag { display: inline-flex; padding: 5px 11px; color: var(--green-900); background: var(--lime-soft); border-radius: 999px; font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
+.promotion-card--news .promotion-card__tag { color: #15536a; background: #dff4f7; }
+.promotion-card--announcement .promotion-card__tag { color: #714919; background: #fff0cf; }
+.promotion-card h3 { margin: 12px 0 6px; font-size: clamp(1.2rem, 2vw, 1.45rem); line-height: 1.25; }
+.promotion-card p { margin: 0 0 12px; color: var(--muted); overflow-wrap: anywhere; }
+.promotion-card__dates { margin-top: 4px !important; margin-bottom: 0 !important; font-size: .8rem; }
+.button--promotion { margin-top: 4px; color: var(--white); background: var(--green-700); }
+.promotions__pagination { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 30px; }
+.promotions__pagination[hidden] { display: none; }
+.promotions__pagination span { min-width: 110px; color: var(--muted); font-size: .9rem; font-weight: 700; text-align: center; }
+.pagination-button { padding: 9px 15px; color: var(--green-900); background: var(--white); border: 1px solid var(--line); border-radius: 10px; font: inherit; font-weight: 750; cursor: pointer; }
+.pagination-button:hover:not(:disabled), .pagination-button:focus-visible { color: var(--white); background: var(--green-700); border-color: var(--green-700); }
+.pagination-button:disabled { cursor: not-allowed; opacity: .45; }
+.footer__admin { color: rgba(255,255,255,.58); font-size: .82rem; }
+.footer__admin:hover, .footer__admin:focus-visible { color: var(--white); text-decoration: underline; }
+@media (max-width: 900px) { .promotions__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .promotions__grid { grid-template-columns: 1fr; gap: 18px; } .promotion-card__media { height: 200px; flex-basis: 200px; } .promotion-card__body { padding: 18px; } .promotions__pagination { gap: 9px; } .pagination-button { padding: 8px 10px; } }

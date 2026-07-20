@@ -17,7 +17,9 @@
   <title>Supermercado entre amigos | El Carmen de Biolley</title>
   <link rel="canonical" href="https://entreamigosbiolley.com/" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20260622-2">
+  <link rel="stylesheet" href="styles.css?v=20260720-5">
+  <link rel="stylesheet" href="css/promotions.css?v=20260720-7">
+  <script type="module" src="js/theme.js?v=20260720-1"></script>
 
   <script type="application/ld+json">
   {
@@ -62,6 +64,9 @@
         Ver ubicación
         <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
       </a>
+      <a class="topbar__settings" href="admin/#theme-title" aria-label="Abrir configuración" title="Configuración" hidden>
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.12 2.12-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1.04 1.55v.09h-3v-.09a1.7 1.7 0 0 0-1.04-1.55 1.7 1.7 0 0 0-1.88.34l-.06.06-2.12-2.12.06-.06A1.7 1.7 0 0 0 7 15a1.7 1.7 0 0 0-1.55-1.04H5.3v-3h.15A1.7 1.7 0 0 0 7 9.92a1.7 1.7 0 0 0-.34-1.88l-.06-.06 2.12-2.12.06.06a1.7 1.7 0 0 0 1.88.34A1.7 1.7 0 0 0 11.7 4.7v-.1h3v.1a1.7 1.7 0 0 0 1.04 1.56 1.7 1.7 0 0 0 1.88-.34l.06-.06 2.12 2.12-.06.06a1.7 1.7 0 0 0-.34 1.88 1.7 1.7 0 0 0 1.55 1.04h.15v3h-.15A1.7 1.7 0 0 0 19.4 15Z"/></svg>
+      </a>
     </div>
   </div>
 
@@ -79,8 +84,10 @@
         <a href="#inicio" class="is-active">Inicio</a>
         <a href="#categorias">Categorías</a>
         <a href="#ofertas">Ofertas</a>
+        <a href="#novedades">Novedades</a>
         <a href="#nosotros">Nosotros</a>
         <a href="#contacto">Contacto</a>
+        <a href="admin/#theme-title">Configuración</a>
       </nav>
 
       <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Abrir menú" aria-controls="main-nav" aria-expanded="false">
@@ -237,6 +244,25 @@
       </div>
     </section>
 
+    <section class="promotions section" id="novedades" aria-labelledby="promotions-title">
+      <div class="container">
+        <div class="section-heading reveal">
+          <div>
+            <p class="eyebrow"><span></span> Mantente al día</p>
+            <h2 id="promotions-title">Novedades y promociones</h2>
+          </div>
+          <p>Descubre anuncios, novedades y promociones vigentes del supermercado.</p>
+        </div>
+        <p class="promotions__status" id="promotions-status" role="status">Cargando publicaciones…</p>
+        <div class="promotions__grid" id="promotions-grid" aria-live="polite"></div>
+        <nav class="promotions__pagination" id="promotions-pagination" aria-label="Páginas de novedades" hidden>
+          <button class="pagination-button" id="promotions-previous" type="button">← Anterior</button>
+          <span id="promotions-page-status" aria-live="polite"></span>
+          <button class="pagination-button" id="promotions-next" type="button">Siguiente →</button>
+        </nav>
+      </div>
+    </section>
+
     <section class="benefits section" id="beneficios" aria-labelledby="benefits-title">
       <div class="container">
         <div class="section-heading section-heading--center reveal">
@@ -370,6 +396,7 @@
         <a href="#ofertas">Ofertas</a>
         <a href="#nosotros">Nosotros</a>
         <a href="#contacto">Contacto</a>
+        <a href="admin/#theme-title">Configuración</a>
       </nav>
     </div>
     <div class="container footer__bottom">
@@ -426,5 +453,6 @@
   </div>
 
   <script src="script.js?v=20260622-2" defer></script>
+  <script type="module" src="js/promotions.js?v=20260720-3"></script>
 </body>
 </html>

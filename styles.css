@@ -153,6 +153,33 @@ a {
   font-weight: 700;
 }
 
+.topbar__inner > a:not(.topbar__settings) {
+  margin-left: auto;
+}
+
+.topbar__settings {
+  display: grid !important;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  margin-left: -14px !important;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 50%;
+  color: var(--white) !important;
+  transition: color var(--transition), background var(--transition), transform var(--transition);
+}
+
+.topbar__settings:hover,
+.topbar__settings:focus-visible {
+  color: var(--green-950) !important;
+  background: var(--lime);
+  transform: rotate(28deg);
+}
+
+.topbar__settings svg { width: 17px; height: 17px; }
+.topbar__settings[hidden] { display: none !important; }
+
 /* Cabecera y navegación */
 .site-header {
   position: sticky;
