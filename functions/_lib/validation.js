@@ -2,10 +2,10 @@ const TYPES=new Set(["promotion","news","announcement"]), UUID=/^[0-9a-f]{8}-[0-
 const clean=(value,max)=>typeof value==="string"?value.trim().slice(0,max):"";
 export function validId(value){return UUID.test(value||"");}
 export function validatePublication(input){
-  const data={type:clean(input.type,20),title:clean(input.title,120),description:clean(input.description,600),imageKey:clean(input.imageKey,100),startDate:clean(input.startDate,10),endDate:clean(input.endDate,10),active:input.active===true||input.active===1,buttonText:clean(input.buttonText,50),buttonUrl:clean(input.buttonUrl,500)};const errors=[];
+  const data={type:clean(input.type,20),title:clean(input.title,120),description:clean(input.description,600),imageKey:clean(input.imageKey,100),startDate:clean(input.startDate,10)||null,endDate:clean(input.endDate,10)||null,active:input.active===true||input.active===1,buttonText:clean(input.buttonText,50),buttonUrl:clean(input.buttonUrl,500)};const errors=[];
   if(!TYPES.has(data.type))errors.push("Tipo de publicación inválido.");if(!data.title)errors.push("El título es obligatorio.");if(typeof input.title==="string"&&input.title.trim().length>120)errors.push("El título no puede superar 120 caracteres.");if(typeof input.description==="string"&&input.description.trim().length>600)errors.push("La descripción no puede superar 600 caracteres.");
   if(typeof input.active!=="boolean")errors.push("El estado debe ser activo o inactivo.");
-  if(!DATE.test(data.startDate)||!DATE.test(data.endDate))errors.push("Las fechas son obligatorias y deben ser válidas.");if(data.startDate&&data.endDate&&data.endDate<data.startDate)errors.push("La fecha final no puede ser anterior a la inicial.");
+  if(Boolean(data.startDate)!==Boolean(data.endDate))errors.push("Completa ambas fechas o selecciona publicar sin fechas.");if(data.startDate&&(!DATE.test(data.startDate)||!DATE.test(data.endDate)))errors.push("Las fechas deben ser válidas.");if(data.startDate&&data.endDate&&data.endDate<data.startDate)errors.push("La fecha final no puede ser anterior a la inicial.");
   if(data.buttonUrl){try{const url=new URL(data.buttonUrl);if(!["http:","https:"].includes(url.protocol))throw 0;}catch{errors.push("La dirección web no es válida.");}}if(Boolean(data.buttonText)!==Boolean(data.buttonUrl))errors.push("El texto y la dirección del botón deben completarse juntos.");
   return {data,errors};
 }

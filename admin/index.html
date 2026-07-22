@@ -35,7 +35,8 @@
         <label>Descripción <span aria-hidden="true">*</span><textarea id="description" rows="5" maxlength="600" required aria-describedby="description-help"></textarea><small id="description-help"><span id="description-count">0</span>/600 caracteres</small></label>
         <label>Imagen (JPEG, PNG o WebP; se optimiza automáticamente hasta 1 MB)<input id="image" type="file" accept="image/jpeg,image/png,image/webp"></label>
         <div class="image-preview" id="image-preview" hidden><img id="preview-image" alt="Vista previa de la imagen seleccionada"><button id="remove-image" class="button button--quiet" type="button">Quitar imagen</button></div>
-        <div class="field-row"><label>Fecha de inicio <span aria-hidden="true">*</span><input id="start-date" type="date" required></label><label>Fecha de finalización <span aria-hidden="true">*</span><input id="end-date" type="date" required></label></div>
+        <label class="check no-dates-option"><input id="without-dates" type="checkbox"> Publicar promoción sin fechas</label>
+        <div class="field-row" id="publication-dates"><label>Fecha de inicio <span aria-hidden="true">*</span><input id="start-date" type="date" required></label><label>Fecha de finalización <span aria-hidden="true">*</span><input id="end-date" type="date" required></label></div>
         <div class="field-row"><label>Texto del botón<input id="button-text" type="text" maxlength="50" placeholder="Ej. Ver detalles"></label><label>Dirección web del botón<input id="button-url" type="url" placeholder="https://ejemplo.com"></label></div>
         <button class="button button--primary" id="save-button" type="submit">Guardar publicación</button>
       </form>

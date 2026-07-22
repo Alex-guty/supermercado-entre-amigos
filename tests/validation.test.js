@@ -5,5 +5,7 @@ test("rechaza título vacío",()=>assert.ok(validatePublication({...valid,title:
 test("rechaza tipo y estado inválidos",()=>assert.equal(validatePublication({...valid,type:"bad",active:"true"}).errors.length,2));
 test("rechaza fechas invertidas",()=>assert.ok(validatePublication({...valid,endDate:"2026-07-19"}).errors.length));
 test("rechaza URL javascript",()=>assert.ok(validatePublication({...valid,buttonText:"Abrir",buttonUrl:"javascript:alert(1)"}).errors.length));
+test("acepta una publicacion sin fechas y normaliza ambas como null",()=>{const result=validatePublication({...valid,startDate:"",endDate:""});assert.deepEqual(result.errors,[]);assert.equal(result.data.startDate,null);assert.equal(result.data.endDate,null);});
+test("rechaza una publicacion con solo una fecha",()=>assert.ok(validatePublication({...valid,endDate:""}).errors.length));
 test("valida UUID",()=>{assert.equal(validId("550e8400-e29b-41d4-a716-446655440000"),true);assert.equal(validId("bad"),false);});
 test("detecta firmas de imágenes",()=>{assert.equal(detectImage(Uint8Array.from([0xff,0xd8,0xff]).buffer).type,"image/jpeg");assert.equal(detectImage(Uint8Array.from([137,80,78,71,13,10,26,10]).buffer).type,"image/png");assert.equal(detectImage(new TextEncoder().encode("RIFF0000WEBP").buffer).type,"image/webp");assert.equal(detectImage(new TextEncoder().encode("fake").buffer),null);});
