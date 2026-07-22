@@ -1,6 +1,8 @@
 .promotions { background: var(--surface); }
 .promotions__status { margin: 34px 0 0; padding: 24px; text-align: center; color: var(--muted); background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-md); }
 .promotions__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 24px; margin-top: 36px; }
+.promotions__grid--single { grid-template-columns: minmax(0, 600px); justify-content: center; }
+.promotions__grid--single .promotion-card__media { height: 350px; flex-basis: 350px; }
 .promotion-card { overflow: hidden; display: flex; flex-direction: column; align-self: start; min-width: 0; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
 .promotion-card__media { position: relative; overflow: hidden; display: grid; place-items: center; width: 100%; height: 220px; flex: 0 0 220px; isolation: isolate; background: var(--cream); }
 .promotion-card__image-backdrop { position: absolute; inset: -18px; z-index: -1; width: calc(100% + 36px); height: calc(100% + 36px); object-fit: cover; filter: blur(16px) saturate(.85); opacity: .28; }
@@ -21,5 +23,5 @@
 .pagination-button:disabled { cursor: not-allowed; opacity: .45; }
 .footer__admin { color: rgba(255,255,255,.58); font-size: .82rem; }
 .footer__admin:hover, .footer__admin:focus-visible { color: var(--white); text-decoration: underline; }
-@media (max-width: 900px) { .promotions__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 620px) { .promotions__grid { grid-template-columns: 1fr; gap: 18px; } .promotion-card__media { height: 200px; flex-basis: 200px; } .promotion-card__body { padding: 18px; } .promotions__pagination { gap: 9px; } .pagination-button { padding: 8px 10px; } }
+@media (max-width: 900px) { .promotions__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .promotions__grid--single { grid-template-columns: minmax(0, 600px); } }
+@media (max-width: 620px) { .promotions__grid { grid-template-columns: 1fr; gap: 18px; } .promotion-card__media { height: 200px; flex-basis: 200px; } .promotions__grid--single .promotion-card__media { height: min(68vw,320px); flex-basis: min(68vw,320px); } .promotion-card__body { padding: 18px; } .promotions__pagination { gap: 9px; } .pagination-button { padding: 8px 10px; } }
