@@ -2,8 +2,9 @@
 .promotions__status { margin: 34px 0 0; padding: 24px; text-align: center; color: var(--muted); background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-md); }
 .promotions__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; gap: 24px; margin-top: 36px; }
 .promotion-card { overflow: hidden; display: flex; flex-direction: column; align-self: start; min-width: 0; background: var(--white); border: 1px solid var(--line); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); }
-.promotion-card__media { overflow: hidden; width: 100%; height: 220px; flex: 0 0 220px; background: var(--cream); }
-.promotion-card__image { display: block; width: 100%; height: 100%; object-fit: fill; }
+.promotion-card__media { position: relative; overflow: hidden; display: grid; place-items: center; width: 100%; height: 220px; flex: 0 0 220px; isolation: isolate; background: var(--cream); }
+.promotion-card__image-backdrop { position: absolute; inset: -18px; z-index: -1; width: calc(100% + 36px); height: calc(100% + 36px); object-fit: cover; filter: blur(16px) saturate(.85); opacity: .28; }
+.promotion-card__image { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; }
 .promotion-card__body { display: flex; flex-direction: column; align-items: flex-start; padding: 20px; }
 .promotion-card__tag { display: inline-flex; padding: 5px 11px; color: var(--green-900); background: var(--lime-soft); border-radius: 999px; font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
 .promotion-card--news .promotion-card__tag { color: #15536a; background: #dff4f7; }
