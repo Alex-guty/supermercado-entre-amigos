@@ -477,8 +477,15 @@ a {
 .hero__actions {
   margin-top: 34px;
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+
+.hero__actions .button {
+  min-height: 48px;
+  padding-inline: 15px;
+  white-space: nowrap;
+  font-size: 0.82rem;
 }
 
 .button--whatsapp-hero {
@@ -572,7 +579,7 @@ a {
   backdrop-filter: blur(8px);
 }
 
-.floating-card--fresh { top: 12%; left: -5%; }
+.floating-card--fresh { top: 12%; left: 4%; }
 .floating-card--open { right: -2%; bottom: 13%; }
 
 .floating-card > span {
@@ -1554,7 +1561,7 @@ a {
   .hero__facts p span { font-size: 0.67rem; }
   .hero__image-wrap { border-width: 8px; }
   .floating-card { padding: 10px 12px; }
-  .floating-card--fresh { left: -1%; top: 5%; }
+  .floating-card--fresh { left: 3%; top: 5%; }
   .floating-card--open { right: -1%; bottom: 7%; }
   .floating-card > span { width: 30px; height: 30px; }
   .floating-card strong { font-size: 0.69rem; }
