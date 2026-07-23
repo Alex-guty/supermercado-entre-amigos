@@ -476,8 +476,8 @@ a {
 
 .hero__actions {
   margin-top: 34px;
-  display: flex;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
   gap: 8px;
 }
 
@@ -1173,7 +1173,7 @@ a {
 .site-footer {
   padding: 70px 0 24px;
   color: var(--white);
-  background: #071e16;
+  background: var(--green-950);
 }
 
 .footer__top {
@@ -1553,8 +1553,20 @@ a {
   .hero__grid { padding: 52px 0 68px; gap: 48px; }
   .hero h1 { font-size: clamp(2.85rem, 14vw, 4.25rem); }
   .hero__lead { margin-top: 24px; }
-  .hero__actions { display: grid; }
-  .hero__actions .button { width: 100%; }
+  .hero__actions {
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+  }
+  .hero__actions .button {
+    width: 100%;
+    min-width: 0;
+    padding-inline: 7px;
+    white-space: normal;
+    font-size: 0.7rem;
+    line-height: 1.15;
+    text-align: center;
+  }
   .hero__facts { margin-top: 34px; gap: 20px; }
   .fact-icon { width: 39px; height: 39px; flex-basis: 39px; }
   .hero__facts strong { font-size: 0.76rem; }
