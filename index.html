@@ -17,8 +17,8 @@
   <title>Supermercado entre amigos | El Carmen de Biolley</title>
   <link rel="canonical" href="https://entreamigosbiolley.com/" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20260720-5">
-  <link rel="stylesheet" href="css/promotions.css?v=20260722-8">
+  <link rel="stylesheet" href="styles.css?v=20260722-6">
+  <link rel="stylesheet" href="css/promotions.css?v=20260722-9">
   <script type="module" src="js/theme.js?v=20260722-2"></script>
 
   <script type="application/ld+json">
@@ -83,8 +83,7 @@
       <nav class="main-nav" id="main-nav" aria-label="Navegación principal">
         <a href="#inicio" class="is-active">Inicio</a>
         <a href="#categorias">Categorías</a>
-        <a href="#ofertas">Ofertas</a>
-        <a href="#novedades">Novedades</a>
+        <a href="#novedades">Promociones</a>
         <a href="#nosotros">Nosotros</a>
         <a href="#contacto">Contacto</a>
         <a href="admin/#theme-title">Configuración</a>
@@ -102,11 +101,18 @@
       <div class="hero__orb hero__orb--two" aria-hidden="true"></div>
       <div class="container hero__grid">
         <div class="hero__content reveal">
-          <p class="eyebrow"><span></span> Tu supermercado local</p>
-          <h1 id="hero-title">Todo lo que necesitas, <em>cerca de ti.</em></h1>
-          <p class="hero__lead">Productos para tu mesa, tu hogar y tu día a día, con la cercanía de siempre en El Carmen de Biolley.</p>
+          <p class="eyebrow"><span></span> Tu supermercado local · Abierto todos los días</p>
+          <h1 id="hero-title">Buenas compras, <em>entre amigos.</em></h1>
+          <p class="hero__lead">Productos frescos, precios para tu día a día y promociones que vale la pena aprovechar, aquí mismo en El Carmen de Biolley.</p>
 
           <div class="hero__actions">
+            <a class="button" href="#novedades">
+              Ver promociones
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m5 12 14 0M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="button button--whatsapp-hero" href="https://wa.me/50689531112?text=Hola%2C%20quisiera%20consultar%20las%20promociones%20y%20precios%20de%20Supermercado%20entre%20amigos." target="_blank" rel="noopener noreferrer">
+              Consultar por WhatsApp
+            </a>
             <a class="button button--outline" href="https://www.google.com/maps/search/?api=1&amp;query=El+Carmen+de+Biolley%2C+Buenos+Aires%2C+Puntarenas" target="_blank" rel="noopener noreferrer">
               Cómo llegar
             </a>
@@ -191,67 +197,14 @@
       </div>
     </section>
 
-    <section class="offers section" id="ofertas" aria-labelledby="offers-title">
-      <div class="container">
-        <div class="section-heading section-heading--light reveal">
-          <div>
-            <p class="eyebrow eyebrow--light"><span></span> Ahorra en tu compra</p>
-            <h2 id="offers-title">Ofertas destacadas</h2>
-          </div>
-          <p>Consulta en tienda nuestras promociones y la disponibilidad de cada producto.</p>
-        </div>
-
-        <div class="offer-grid">
-          <article class="offer-card offer-card--main reveal">
-            <div class="offer-card__art" aria-hidden="true">
-              <span class="offer-card__emoji">🥑</span>
-              <span class="offer-card__emoji">🍅</span>
-              <span class="offer-card__emoji">🍌</span>
-            </div>
-            <div class="offer-card__body">
-              <span class="tag">Selección de la semana</span>
-              <h3>Frescura para tu mesa</h3>
-              <p>Pregunta por la selección de frutas y vegetales disponible hoy.</p>
-            </div>
-          </article>
-
-          <article class="offer-card offer-card--pantry reveal">
-            <div class="offer-card__art" aria-hidden="true">
-              <span class="offer-card__emoji">🍚</span>
-              <span class="offer-card__emoji">🥫</span>
-            </div>
-            <div class="offer-card__body">
-              <span class="tag tag--warm">Despensa</span>
-              <h3>Esenciales de cada día</h3>
-              <p>Encuentra opciones para completar tu alacena.</p>
-            </div>
-          </article>
-
-          <article class="offer-card offer-card--home reveal">
-            <div class="offer-card__art" aria-hidden="true">
-              <span class="offer-card__emoji">🧽</span>
-              <span class="offer-card__emoji">🧴</span>
-            </div>
-            <div class="offer-card__body">
-              <span class="tag tag--aqua">Hogar</span>
-              <h3>Todo limpio, todo listo</h3>
-              <p>Productos prácticos para cuidar cada espacio.</p>
-            </div>
-          </article>
-        </div>
-
-        <p class="offers__note reveal">Las promociones pueden variar. Visítanos para conocer las ofertas vigentes.</p>
-      </div>
-    </section>
-
     <section class="promotions section" id="novedades" aria-labelledby="promotions-title">
       <div class="container">
         <div class="section-heading reveal">
           <div>
-            <p class="eyebrow"><span></span> Mantente al día</p>
-            <h2 id="promotions-title">Novedades y promociones</h2>
+            <p class="eyebrow"><span></span> Ahorra en tu compra</p>
+            <h2 id="promotions-title">Promociones para aprovechar</h2>
           </div>
-          <p>Descubre anuncios, novedades y promociones vigentes del supermercado.</p>
+          <p>Descubre precios especiales, productos destacados y novedades vigentes del supermercado.</p>
         </div>
         <p class="promotions__status" id="promotions-status" role="status">Cargando publicaciones…</p>
         <div class="promotions__grid" id="promotions-grid" aria-live="polite"></div>
@@ -393,7 +346,7 @@
       <p class="footer__slogan">Cerca de ti, siempre.</p>
       <nav class="footer__nav" aria-label="Navegación del pie">
         <a href="#categorias">Categorías</a>
-        <a href="#ofertas">Ofertas</a>
+        <a href="#novedades">Promociones</a>
         <a href="#nosotros">Nosotros</a>
         <a href="#contacto">Contacto</a>
         <a href="admin/#theme-title">Configuración</a>
