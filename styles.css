@@ -533,6 +533,7 @@ a {
 
 .hero__visual {
   position: relative;
+  z-index: 4;
   min-width: 0;
 }
 
